@@ -14,6 +14,7 @@
 
   const overlaySvg = document.getElementById('overlaySvg');
   const canvasInner = document.getElementById('canvasInner');
+  const progressFill = document.getElementById('progressFill');
 
   const miniNodes = Array.from(document.querySelectorAll('.miniNode'));
   const allNodes = Array.from(document.querySelectorAll('.node, .mergeNode, .miniNode'));
@@ -46,6 +47,8 @@
   let timer = null;
   let flowTimer = null;
   let flowPhase = 0;
+  let progressTimer = null;
+  const AUTO_INTERVAL = 6500; // ms
 
   // Helper functions
   function iconCheck() {
@@ -116,10 +119,42 @@
     setByIndex(idx - 1);
   }
 
+  function startProgress() {
+    stopProgress();
+    if (!auto) return;
+
+    progressFill.style.width = '0%';
+    const startTime = Date.now();
+
+    progressTimer = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min((elapsed / AUTO_INTERVAL) * 100, 100);
+      progressFill.style.width = progress + '%';
+
+      if (progress >= 100) {
+        stopProgress();
+      }
+    }, 50);
+  }
+
+  function stopProgress() {
+    if (progressTimer) {
+      clearInterval(progressTimer);
+      progressTimer = null;
+    }
+    if (progressFill && !auto) {
+      progressFill.style.width = '0%';
+    }
+  }
+
   function startAuto() {
     stopAuto();
     if (!auto) return;
-    timer = setInterval(next, 6500);
+    startProgress();
+    timer = setInterval(() => {
+      next();
+      startProgress();
+    }, AUTO_INTERVAL);
   }
 
   function stopAuto() {
@@ -127,6 +162,7 @@
       clearInterval(timer);
       timer = null;
     }
+    stopProgress();
   }
 
   function toggleAuto() {
