@@ -163,9 +163,9 @@
     // Determine if pipeline 1 is active
     const activeId = ORDER[idx];
     const isPipeline1Active = ["collect_campaign", "collect_crawl", "image_pool", "auto_filter", "labeling", "expert_models"].includes(activeId);
-    const connectorColor = isPipeline1Active ? 'rgba(74,144,255,.70)' : 'rgba(204,204,204,.70)';
-    const arrowColor = isPipeline1Active ? 'rgba(74,144,255,.75)' : 'rgba(204,204,204,.75)';
-    const dependencyColor = isPipeline1Active ? 'rgba(74,144,255,.65)' : 'rgba(204,204,204,.65)';
+    const connectorColor = isPipeline1Active ? 'rgba(255,107,0,.75)' : 'rgba(204,204,204,.45)';
+    const arrowColor = isPipeline1Active ? 'rgba(255,107,0,.85)' : 'rgba(204,204,204,.5)';
+    const dependencyColor = isPipeline1Active ? 'rgba(255,107,0,.70)' : 'rgba(204,204,204,.4)';
 
     function mkPath(d, color, width, dash) {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
