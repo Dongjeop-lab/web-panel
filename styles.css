@@ -326,18 +326,6 @@ body{
   min-height: 176px;
   min-width:0;
 }
-.lane::before{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  top:50%;
-  height:2px;
-  transform: translateY(-50%);
-  background: linear-gradient(90deg, rgba(0,0,0,.03), rgba(0,0,0,.06), rgba(0,0,0,.03));
-  opacity:.5;
-  z-index:0;
-  pointer-events:none;
-}
 
 .node{
   width: var(--nodeW);
