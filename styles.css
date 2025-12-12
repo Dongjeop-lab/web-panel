@@ -259,7 +259,7 @@ body{
   min-width:0;
 }
 .laneHeader.top{ top: 12px; }
-.laneHeader.bottom{ top: calc(50% + 12px); }
+.laneHeader.bottom{ bottom: 12px; top: auto; }
 
 .laneHeader .left{
   display:flex; align-items:center; gap:10px;
