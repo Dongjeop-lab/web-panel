@@ -7,6 +7,7 @@
   --cream: #FFE8C2;
   --light-blue: #E8F4FF;
   --highlight-blue: #4A90FF;
+  --inactive-gray: #CCCCCC;
 
   /* Base Colors */
   --bg0:#FFFFFF;
@@ -300,12 +301,24 @@ body{
   font-weight: 700;
 }
 .laneHeader.top .label{
-  border: 1px solid rgba(255,107,0,.4);
-  background: linear-gradient(135deg, rgba(255,157,66,.95), rgba(255,107,0,.9));
+  border: 1px solid rgba(204,204,204,.4);
+  background: linear-gradient(135deg, rgba(204,204,204,.95), rgba(204,204,204,.85));
   color: var(--white);
-  box-shadow: 0 2px 8px rgba(255,107,0,.25);
+  box-shadow: 0 2px 8px rgba(204,204,204,.25);
+}
+.laneHeader.top.pipeline-active .label{
+  border: 1px solid rgba(74,144,255,.4);
+  background: linear-gradient(135deg, rgba(74,144,255,.95), rgba(74,144,255,.85));
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(74,144,255,.25);
 }
 .laneHeader.bottom .label{
+  border: 1px solid rgba(204,204,204,.4);
+  background: linear-gradient(135deg, rgba(204,204,204,.95), rgba(204,204,204,.85));
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(204,204,204,.25);
+}
+.laneHeader.bottom.pipeline-active .label{
   border: 1px solid rgba(74,144,255,.4);
   background: linear-gradient(135deg, rgba(74,144,255,.95), rgba(74,144,255,.85));
   color: var(--white);
@@ -355,10 +368,18 @@ body{
   border-radius: 16px;
 }
 .lane:first-child{
-  background: linear-gradient(90deg, rgba(255,157,66,.08), rgba(255,157,66,.04), transparent 80%);
-  border: 1px solid rgba(255,107,0,.15);
+  background: linear-gradient(90deg, rgba(204,204,204,.08), rgba(204,204,204,.04), transparent 80%);
+  border: 1px solid rgba(204,204,204,.15);
+}
+.lane:first-child.pipeline-active{
+  background: linear-gradient(90deg, rgba(74,144,255,.08), rgba(74,144,255,.04), transparent 80%);
+  border: 1px solid rgba(74,144,255,.15);
 }
 .lane:last-child{
+  background: linear-gradient(90deg, rgba(204,204,204,.08), rgba(204,204,204,.04), transparent 80%);
+  border: 1px solid rgba(204,204,204,.15);
+}
+.lane:last-child.pipeline-active{
   background: linear-gradient(90deg, rgba(74,144,255,.08), rgba(74,144,255,.04), transparent 80%);
   border: 1px solid rgba(74,144,255,.15);
 }
@@ -451,6 +472,14 @@ body{
   opacity:.85;
 }
 .arrow svg{ width:100%; height:100%; }
+.arrow.arrow-p1 path,
+.arrow.arrow-p2 path{
+  stroke: rgba(204,204,204,.6);
+}
+.arrow.arrow-p1.pipeline-active path,
+.arrow.arrow-p2.pipeline-active path{
+  stroke: rgba(74,144,255,.6);
+}
 
 .collectGroup{
   display:flex;

@@ -65,6 +65,31 @@
       if (m) m.classList.add('active');
     }
 
+    // Determine which pipeline is active
+    const isPipeline1Active = ["collect_campaign", "collect_crawl", "image_pool", "auto_filter", "labeling", "expert_models"].includes(id);
+    const isPipeline2Active = ["mass_images", "auto_analyze", "restaurant_qc"].includes(id);
+
+    // Update lane classes
+    const lanes = document.querySelectorAll('.lane');
+    const laneHeaders = document.querySelectorAll('.laneHeader');
+    const arrows = document.querySelectorAll('.arrow');
+
+    // Remove all pipeline-active classes first
+    lanes.forEach(lane => lane.classList.remove('pipeline-active'));
+    laneHeaders.forEach(header => header.classList.remove('pipeline-active'));
+    arrows.forEach(arrow => arrow.classList.remove('pipeline-active'));
+
+    // Add pipeline-active class to the appropriate pipeline
+    if (isPipeline1Active) {
+      lanes[0]?.classList.add('pipeline-active');
+      laneHeaders[0]?.classList.add('pipeline-active');
+      document.querySelectorAll('.arrow-p1').forEach(arrow => arrow.classList.add('pipeline-active'));
+    } else if (isPipeline2Active) {
+      lanes[1]?.classList.add('pipeline-active');
+      laneHeaders[1]?.classList.add('pipeline-active');
+      document.querySelectorAll('.arrow-p2').forEach(arrow => arrow.classList.add('pipeline-active'));
+    }
+
     const d = DATA[id] || DATA["collect_campaign"];
     detailHead.textContent = d.head;
     detailDesc.textContent = d.desc;
@@ -135,6 +160,13 @@
 
     overlaySvg.setAttribute('viewBox', `0 0 ${cRect.width} ${cRect.height}`);
 
+    // Determine if pipeline 1 is active
+    const activeId = ORDER[idx];
+    const isPipeline1Active = ["collect_campaign", "collect_crawl", "image_pool", "auto_filter", "labeling", "expert_models"].includes(activeId);
+    const connectorColor = isPipeline1Active ? 'rgba(74,144,255,.70)' : 'rgba(204,204,204,.70)';
+    const arrowColor = isPipeline1Active ? 'rgba(74,144,255,.75)' : 'rgba(204,204,204,.75)';
+    const dependencyColor = isPipeline1Active ? 'rgba(74,144,255,.65)' : 'rgba(204,204,204,.65)';
+
     function mkPath(d, color, width, dash) {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', d);
@@ -152,15 +184,15 @@
     const d2 = `M ${p2.x} ${p2.y} C ${p2.x + 40} ${p2.y}, ${join.x - 40} ${join.y + 20}, ${join.x} ${join.y}`;
     const d3 = `M ${join.x} ${join.y} L ${pe.x} ${pe.y}`;
 
-    mkPath(d1, 'rgba(255,107,0,.70)', 2.2);
-    mkPath(d2, 'rgba(255,107,0,.70)', 2.2);
-    mkPath(d3, 'rgba(255,107,0,.70)', 2.4);
+    mkPath(d1, connectorColor, 2.2);
+    mkPath(d2, connectorColor, 2.2);
+    mkPath(d3, connectorColor, 2.4);
 
     const ah = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const ax = pe.x, ay = pe.y;
     ah.setAttribute('d', `M ${ax - 10} ${ay - 7} L ${ax} ${ay} L ${ax - 10} ${ay + 7}`);
     ah.setAttribute('fill', 'none');
-    ah.setAttribute('stroke', 'rgba(255,107,0,.75)');
+    ah.setAttribute('stroke', arrowColor);
     ah.setAttribute('stroke-width', '2.4');
     ah.setAttribute('stroke-linecap', 'round');
     ah.setAttribute('stroke-linejoin', 'round');
@@ -176,12 +208,12 @@
       const midY = (from.y + to.y) / 2;
 
       const dDep = `M ${from.x} ${from.y} C ${from.x} ${midY}, ${to.x} ${midY}, ${to.x} ${to.y}`;
-      mkPath(dDep, 'rgba(255,107,0,.65)', 2.6, '6 8');
+      mkPath(dDep, dependencyColor, 2.6, '6 8');
 
       const ah2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       ah2.setAttribute('d', `M ${to.x - 7} ${to.y + 10} L ${to.x} ${to.y} L ${to.x + 7} ${to.y + 10}`);
       ah2.setAttribute('fill', 'none');
-      ah2.setAttribute('stroke', 'rgba(255,107,0,.70)');
+      ah2.setAttribute('stroke', arrowColor);
       ah2.setAttribute('stroke-width', '2.6');
       ah2.setAttribute('stroke-linecap', 'round');
       ah2.setAttribute('stroke-linejoin', 'round');
