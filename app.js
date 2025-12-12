@@ -152,15 +152,15 @@
     const d2 = `M ${p2.x} ${p2.y} C ${p2.x + 40} ${p2.y}, ${join.x - 40} ${join.y + 20}, ${join.x} ${join.y}`;
     const d3 = `M ${join.x} ${join.y} L ${pe.x} ${pe.y}`;
 
-    mkPath(d1, 'rgba(255,139,77,.70)', 2.2);
-    mkPath(d2, 'rgba(255,139,77,.70)', 2.2);
-    mkPath(d3, 'rgba(255,139,77,.70)', 2.4);
+    mkPath(d1, 'rgba(255,107,0,.70)', 2.2);
+    mkPath(d2, 'rgba(255,107,0,.70)', 2.2);
+    mkPath(d3, 'rgba(255,107,0,.70)', 2.4);
 
     const ah = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const ax = pe.x, ay = pe.y;
     ah.setAttribute('d', `M ${ax - 10} ${ay - 7} L ${ax} ${ay} L ${ax - 10} ${ay + 7}`);
     ah.setAttribute('fill', 'none');
-    ah.setAttribute('stroke', 'rgba(255,139,77,.75)');
+    ah.setAttribute('stroke', 'rgba(255,107,0,.75)');
     ah.setAttribute('stroke-width', '2.4');
     ah.setAttribute('stroke-linecap', 'round');
     ah.setAttribute('stroke-linejoin', 'round');
@@ -176,12 +176,12 @@
       const midY = (from.y + to.y) / 2;
 
       const dDep = `M ${from.x} ${from.y} C ${from.x} ${midY}, ${to.x} ${midY}, ${to.x} ${to.y}`;
-      mkPath(dDep, 'rgba(255,139,77,.65)', 2.6, '6 8');
+      mkPath(dDep, 'rgba(255,107,0,.65)', 2.6, '6 8');
 
       const ah2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       ah2.setAttribute('d', `M ${to.x - 7} ${to.y + 10} L ${to.x} ${to.y} L ${to.x + 7} ${to.y + 10}`);
       ah2.setAttribute('fill', 'none');
-      ah2.setAttribute('stroke', 'rgba(255,139,77,.70)');
+      ah2.setAttribute('stroke', 'rgba(255,107,0,.70)');
       ah2.setAttribute('stroke-width', '2.6');
       ah2.setAttribute('stroke-linecap', 'round');
       ah2.setAttribute('stroke-linejoin', 'round');
