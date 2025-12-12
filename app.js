@@ -211,15 +211,6 @@
 
       const dDep = `M ${from.x} ${from.y} C ${from.x} ${midY}, ${to.x} ${midY}, ${to.x} ${to.y}`;
       mkPath(dDep, dependencyColor, 2.6, '6 8');
-
-      const ah2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      ah2.setAttribute('d', `M ${to.x - 7} ${to.y + 10} L ${to.x} ${to.y} L ${to.x + 7} ${to.y + 10}`);
-      ah2.setAttribute('fill', 'none');
-      ah2.setAttribute('stroke', arrowColor);
-      ah2.setAttribute('stroke-width', '2.6');
-      ah2.setAttribute('stroke-linecap', 'round');
-      ah2.setAttribute('stroke-linejoin', 'round');
-      overlaySvg.appendChild(ah2);
     }
   }
 
