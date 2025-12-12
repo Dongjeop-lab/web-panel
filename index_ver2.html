@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동접랩 성과 공유 판넬</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --accent-color: #3b82f6; /* Blue for Tech */
+            --highlight-color: #f59e0b; /* Orange for Warmth/Attention */
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden; /* 스크롤 방지 (디스플레이용) */
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 3vw;
+        }
+
+        /* 배경 애니메이션 효과 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: rotateBg 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 2vh;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            color: var(--highlight-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5vh;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5vh;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-sub);
+            font-weight: 400;
+        }
+
+        /* MAIN LAYOUT (Pipeline) */
+        main {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 75vh;
+            gap: 20px;
+            position: relative;
+        }
+
+        /* Columns */
+        .col {
+            flex: 1;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .col:nth-child(1) { animation-delay: 0.2s; border-top: 4px solid #10b981; } /* Data: Green */
+        .col:nth-child(2) { animation-delay: 0.4s; border-top: 4px solid #3b82f6; } /* AI: Blue */
+        .col:nth-child(3) { animation-delay: 0.6s; border-top: 4px solid #f59e0b; } /* System: Orange */
+
+        .col-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .col-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+
+        .col-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .col-desc {
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        /* Inner Cards */
+        .project-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-list li {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+
+        .project-list li::before {
+            content: '•';
+            color: var(--highlight-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        /* Arrows between columns */
+        .arrow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        /* Diagram Box (For AI Section) */
+        .diagram-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .diagram-item {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px dashed var(--accent-color);
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .diagram-center {
+            grid-column: span 2;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 2vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .footer-msg {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+        
+        .footer-msg span {
+            color: var(--highlight-color);
+            font-weight: 700;
+        }
+
+        .call-to-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">Dongjeop Lab</div>
+        <h1>보이지 않는 문턱을 없애는 기술</h1>
+        <div class="subtitle">실내 이미지 한 장으로 만드는 '동등한 접근성' 생태계</div>
+    </header>
+
+    <main>
+        <section class="col">
+            <div class="col-header">
+                <div class="col-icon" style="color: #10b981;"><i class="fa-solid fa-database"></i></div>
+                <div>
+                    <div class="col-title">DATA LAYER</div>
+                    <div class="col-desc">대규모 실내 이미지 데이터셋 구축</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">PROJECT 01</span>
+                <div class="project-title"><i class="fa-solid fa-users"></i> 시민 참여 (Crowdsourcing)</div>
+                <ul class="project-list">
+                    <li>여러분의 스마트폰 갤러리 속 사진 기부</li>
+                    <li>대중이 직접 참여하는 실내 접근성 라벨링</li>
+                    <li>일상 사진을 '이동약자를 위한 지도'로 변환</li>
+                </ul>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">PROJECT 02</span>
+                <div class="project-title"><i class="fa-solid fa-spider"></i> 웹 크롤링 (Crawling)</div>
+                <ul class="project-list">
+                    <li>웹 상의 실내 이미지 자동 수집기 제작</li>
+                    <li>윤리적 크롤링 규칙 및 고품질 필터링 준수</li>
+                    <li>랩원 검수를 통한 정교한 기반 데이터셋 완성</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="arrow-container">
+            <i class="fa-solid fa-angles-right"></i>
+        </div>
+
+        <section class="col">
+            <div class="col-header">
+                <div class="col-icon" style="color: #3b82f6;"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                    <div class="col-title">AI LAYER</div>
+                    <div class="col-desc">협업하는 AI 전문가 모델 생태계</div>
+                </div>
+            </div>
+
+            <div class="project-card" style="flex-grow: 1; display: flex; flex-direction: column;">
+                <span class="project-tag">PROJECT 03</span>
+                <div class="project-title">실내 접근성 정보 추출 모델</div>
+                
+                <div style="margin: 15px 0; color: #cbd5e1; font-size: 0.95rem;">
+                    "복잡한 실내 환경, 각 분야의 AI 전문가가 분석합니다."
+                </div>
+
+                <div class="diagram-box">
+                    <div class="diagram-item">🚪 진입로 모델</div>
+                    <div class="diagram-item">📏 단차/경사 모델</div>
+                    <div class="diagram-item">🪑 좌석/테이블 모델</div>
+                    <div class="diagram-item">🏧 키오스크 모델</div>
+                    <div class="diagram-center">
+                        <i class="fa-solid fa-layer-group"></i><br>
+                        Aggregation (종합 추론)<br>
+                        <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9">최적의 접근성 정보 도출</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="arrow-container">
+            <i class="fa-solid fa-angles-right"></i>
+        </div>
+
+        <section class="col">
+            <div class="col-header">
+                <div class="col-icon" style="color: #f59e0b;"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div>
+                    <div class="col-title">SYSTEM</div>
+                    <div class="col-desc">신뢰할 수 있는 검증 시스템</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">PROJECT 04</span>
+                <div class="project-title">Human-in-the-loop 검수</div>
+                <ul class="project-list">
+                    <li>AI 분석 결과를 사람이 최종 확인하는 플로우</li>
+                    <li>사용 사례에 따른 최적의 모델 자동 매칭</li>
+                    <li>AI의 '속도' + 사람의 '정확성' 결합</li>
+                </ul>
+            </div>
+
+            <div class="project-card" style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid #f59e0b;">
+                <span class="project-tag" style="color: #f59e0b;">FINAL OUTPUT</span>
+                <div class="project-title">장소 단위 접근성 리포트</div>
+                <ul class="project-list">
+                    <li>파편화된 이미지를 '식당/카페' 단위로 그룹화</li>
+                    <li>해당 장소의 종합적인 접근성 등급 산출</li>
+                    <li>오류 없는 데이터를 위한 이중 검증 구조</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-msg">
+            <i class="fa-solid fa-quote-left" style="color:var(--text-sub); margin-right: 10px;"></i>
+            동접랩은 기술을 통해 <span>물리적 장벽</span>뿐만 아니라, <span>마음의 장벽</span>까지 허물고 있습니다.
+        </div>
+        <div class="call-to-action">
+            <i class="fa-solid fa-qrcode" style="font-size: 1.5rem;"></i>
+            <span>동접랩 프로젝트 참여하기</span>
+        </div>
+    </footer>
+
+</body>
+</html>
