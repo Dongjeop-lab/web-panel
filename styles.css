@@ -181,9 +181,9 @@ body{
   position:relative;
 }
 .panel-highlight{
-  border:2px solid var(--highlight-blue);
-  background: linear-gradient(180deg, rgba(74,144,255,.06), rgba(74,144,255,.04));
-  box-shadow: 0 8px 32px rgba(74,144,255,.22), 0 0 0 3px rgba(74,144,255,.08);
+  border:2px solid var(--primary-orange);
+  background: linear-gradient(180deg, rgba(255,107,0,.06), rgba(255,107,0,.04));
+  box-shadow: 0 8px 32px rgba(255,107,0,.22), 0 0 0 3px rgba(255,107,0,.08);
 }
 .panel::before{
   content:"";
@@ -636,11 +636,11 @@ body{
 
 .bigCard{
   border-radius: var(--radius);
-  border:1px solid var(--highlight-blue);
-  background: linear-gradient(135deg, rgba(74,144,255,.15), rgba(74,144,255,.08));
+  border:1px solid var(--primary-orange);
+  background: linear-gradient(135deg, rgba(255,107,0,.15), rgba(255,107,0,.08));
   padding:24px;
   overflow:hidden;
-  box-shadow: 0 4px 20px rgba(74,144,255,.18), 0 0 0 2px rgba(74,144,255,.08);
+  box-shadow: 0 4px 20px rgba(255,107,0,.18), 0 0 0 2px rgba(255,107,0,.08);
 }
 .bigCard h3{
   margin:0;
@@ -678,22 +678,22 @@ body{
 .check{
   width:16px;height:16px;flex:0 0 auto;
   margin-top:2px;
-  filter: drop-shadow(0 2px 6px rgba(74,144,255,.2));
-  color: var(--highlight-blue);
+  filter: drop-shadow(0 2px 6px rgba(255,107,0,.2));
+  color: var(--primary-orange);
 }
 
 .currentNode{
   border-radius: var(--radius);
-  border:2px solid var(--primary-orange);
-  background: linear-gradient(135deg, rgba(255,157,66,.18), rgba(255,107,0,.12));
+  border:2px solid var(--highlight-blue);
+  background: linear-gradient(135deg, rgba(74,144,255,.18), rgba(74,144,255,.12));
   padding:20px 24px;
-  box-shadow: 0 4px 20px rgba(255,107,0,.2), 0 0 0 3px rgba(255,107,0,.08);
+  box-shadow: 0 4px 20px rgba(74,144,255,.2), 0 0 0 3px rgba(74,144,255,.08);
 }
 .currentNode .label{
   font-family:var(--mono);
   font-size:11px;
   font-weight:700;
-  color: var(--primary-orange);
+  color: var(--highlight-blue);
   text-transform:uppercase;
   letter-spacing:.05em;
   margin-bottom:8px;
@@ -710,10 +710,10 @@ body{
 
 .cta{
   border-radius: var(--radius);
-  border:1px solid var(--highlight-blue);
-  background: linear-gradient(135deg, rgba(74,144,255,.15), rgba(74,144,255,.08));
+  border:1px solid var(--primary-orange);
+  background: linear-gradient(135deg, rgba(255,107,0,.15), rgba(255,107,0,.08));
   padding:24px;
-  box-shadow: 0 4px 20px rgba(74,144,255,.18), 0 0 0 2px rgba(74,144,255,.08);
+  box-shadow: 0 4px 20px rgba(255,107,0,.18), 0 0 0 2px rgba(255,107,0,.08);
 }
 .cta .big{
   margin:0;
