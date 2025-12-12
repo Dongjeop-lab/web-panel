@@ -176,13 +176,13 @@
       const midY = (from.y + to.y) / 2;
 
       const dDep = `M ${from.x} ${from.y} C ${from.x} ${midY}, ${to.x} ${midY}, ${to.x} ${to.y}`;
-      mkPath(dDep, 'rgba(255,255,255,.20)', 2, '5 7');
+      mkPath(dDep, 'rgba(124,92,255,.65)', 2.6, '6 8');
 
       const ah2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       ah2.setAttribute('d', `M ${to.x - 7} ${to.y + 10} L ${to.x} ${to.y} L ${to.x + 7} ${to.y + 10}`);
       ah2.setAttribute('fill', 'none');
-      ah2.setAttribute('stroke', 'rgba(255,255,255,.22)');
-      ah2.setAttribute('stroke-width', '2');
+      ah2.setAttribute('stroke', 'rgba(124,92,255,.70)');
+      ah2.setAttribute('stroke-width', '2.6');
       ah2.setAttribute('stroke-linecap', 'round');
       ah2.setAttribute('stroke-linejoin', 'round');
       overlaySvg.appendChild(ah2);
