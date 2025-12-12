@@ -7,6 +7,7 @@
   const appealTitle = document.getElementById('appealTitle');
   const appealSub = document.getElementById('appealSub');
 
+  const currentNodeTitle = document.getElementById('currentNodeTitle');
   const detailHead = document.getElementById('detailHead');
   const detailDesc = document.getElementById('detailDesc');
   const detailList = document.getElementById('detailList');
@@ -91,6 +92,7 @@
     }
 
     const d = DATA[id] || DATA["collect_campaign"];
+    currentNodeTitle.textContent = d.head;
     detailHead.textContent = d.head;
     detailDesc.textContent = d.desc;
 
