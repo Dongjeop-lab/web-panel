@@ -35,7 +35,7 @@
   --gap: 18px;
 
   /* responsive geometry */
-  --nodeW: clamp(190px, 14vw, 250px);
+  --nodeW: clamp(220px, 16vw, 300px);
   --nodeH: 118px;
   --pipeGap: 22px;
   --arrowW: clamp(34px, 3.4vw, 54px);
