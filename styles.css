@@ -355,7 +355,7 @@ body{
 .nodes{
   position:absolute;
   inset: 0;
-  padding: 48px 18px 18px 18px;
+  padding: 48px 18px 48px 18px;
   display:flex;
   flex-direction:column;
   gap: var(--pipeGap);
@@ -368,12 +368,13 @@ body{
   gap: 18px;
   justify-content:flex-start;
   position:relative;
-  min-height: 176px;
   min-width:0;
   padding: 12px;
   border-radius: 16px;
 }
 .lane:first-child{
+  min-height: 200px;
+  flex: 1.4;
   background: linear-gradient(90deg, rgba(204,204,204,.12), rgba(204,204,204,.06), transparent 80%);
   border: 1px solid rgba(204,204,204,.25);
   opacity: 0.5;
@@ -386,6 +387,8 @@ body{
   box-shadow: 0 4px 20px rgba(255,107,0,.15);
 }
 .lane:last-child{
+  min-height: 140px;
+  flex: 1;
   background: linear-gradient(90deg, rgba(204,204,204,.12), rgba(204,204,204,.06), transparent 80%);
   border: 1px solid rgba(204,204,204,.25);
   opacity: 0.5;
