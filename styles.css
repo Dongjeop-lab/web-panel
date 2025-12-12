@@ -161,6 +161,11 @@ body{
   min-height:0;
   position:relative;
 }
+.panel-highlight{
+  border:2px solid rgba(91,139,245,.65);
+  background: linear-gradient(180deg, rgba(91,139,245,.06), rgba(91,139,245,.04));
+  box-shadow: 0 8px 32px rgba(91,139,245,.22), 0 0 0 3px rgba(91,139,245,.08);
+}
 .panel::before{
   content:"";
   position:absolute;
@@ -358,10 +363,10 @@ body{
   box-shadow: 0 4px 16px rgba(0,0,0,.08);
 }
 .node.active{
-  transform: translateY(-2px);
-  border-color: rgba(91,139,245,.5);
-  background: linear-gradient(135deg, rgba(91,139,245,.08), rgba(255,139,77,.05));
-  box-shadow: 0 4px 16px rgba(91,139,245,.15);
+  transform: translateY(-3px);
+  border-color: rgba(91,139,245,.65);
+  background: linear-gradient(135deg, rgba(91,139,245,.15), rgba(91,139,245,.08));
+  box-shadow: 0 6px 24px rgba(91,139,245,.28), 0 0 0 2px rgba(91,139,245,.12);
 }
 .node::after{
   content:"";
@@ -453,10 +458,10 @@ body{
   box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
 .collectGroup .miniNode.active{
-  border-color: rgba(91,139,245,.5);
-  background: linear-gradient(135deg, rgba(91,139,245,.08), rgba(255,139,77,.05));
-  transform: translateY(-2px);
-  box-shadow: 0 3px 12px rgba(91,139,245,.12);
+  border-color: rgba(91,139,245,.65);
+  background: linear-gradient(135deg, rgba(91,139,245,.15), rgba(91,139,245,.08));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(91,139,245,.25), 0 0 0 2px rgba(91,139,245,.12);
 }
 .miniNode .row{
   display:flex;
@@ -511,10 +516,10 @@ body{
 }
 .mergeNode:hover{ transform: translateY(-2px); border-color: rgba(255,139,77,.35); background: rgba(255,255,255,1); box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .mergeNode.active{
-  transform: translateY(-2px);
-  border-color: rgba(91,139,245,.5);
-  background: linear-gradient(135deg, rgba(91,139,245,.08), rgba(255,139,77,.05));
-  box-shadow: 0 4px 16px rgba(91,139,245,.15);
+  transform: translateY(-3px);
+  border-color: rgba(91,139,245,.65);
+  background: linear-gradient(135deg, rgba(91,139,245,.15), rgba(91,139,245,.08));
+  box-shadow: 0 6px 24px rgba(91,139,245,.28), 0 0 0 2px rgba(91,139,245,.12);
 }
 
 .overlaySvg{
@@ -555,10 +560,11 @@ body{
 
 .bigCard{
   border-radius: var(--radius);
-  border:1px solid rgba(0,0,0,.08);
-  background: rgba(248,249,250,.5);
+  border:1px solid rgba(91,139,245,.65);
+  background: linear-gradient(135deg, rgba(91,139,245,.15), rgba(91,139,245,.08));
   padding:14px 14px 12px 14px;
   overflow:hidden;
+  box-shadow: 0 4px 16px rgba(91,139,245,.18), 0 0 0 2px rgba(91,139,245,.08);
 }
 .bigCard h3{
   margin:0;
@@ -602,9 +608,10 @@ body{
 
 .cta{
   border-radius: 22px;
-  border:1px solid rgba(255,139,77,.3);
-  background: linear-gradient(135deg, rgba(255,139,77,.12), rgba(255,152,97,.08));
+  border:1px solid rgba(91,139,245,.65);
+  background: linear-gradient(135deg, rgba(91,139,245,.15), rgba(91,139,245,.08));
   padding:14px 14px 12px 14px;
+  box-shadow: 0 4px 16px rgba(91,139,245,.18), 0 0 0 2px rgba(91,139,245,.08);
 }
 .cta .big{
   margin:0;
