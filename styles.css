@@ -297,6 +297,19 @@ body{
   color: var(--muted2);
   flex: 0 0 auto;
   white-space:nowrap;
+  font-weight: 700;
+}
+.laneHeader.top .label{
+  border: 1px solid rgba(255,107,0,.4);
+  background: linear-gradient(135deg, rgba(255,157,66,.95), rgba(255,107,0,.9));
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(255,107,0,.25);
+}
+.laneHeader.bottom .label{
+  border: 1px solid rgba(74,144,255,.4);
+  background: linear-gradient(135deg, rgba(74,144,255,.95), rgba(74,144,255,.85));
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(74,144,255,.25);
 }
 .laneHeader .desc{
   color: var(--muted);
@@ -317,12 +330,7 @@ body{
 }
 
 .splitLine{
-  position:absolute;
-  left:18px; right:18px;
-  top:50%;
-  height:1px;
-  background: rgba(0,0,0,.08);
-  z-index:1;
+  display: none;
 }
 
 .nodes{
@@ -343,6 +351,16 @@ body{
   position:relative;
   min-height: 176px;
   min-width:0;
+  padding: 12px;
+  border-radius: 16px;
+}
+.lane:first-child{
+  background: linear-gradient(90deg, rgba(255,157,66,.08), rgba(255,157,66,.04), transparent 80%);
+  border: 1px solid rgba(255,107,0,.15);
+}
+.lane:last-child{
+  background: linear-gradient(90deg, rgba(74,144,255,.08), rgba(74,144,255,.04), transparent 80%);
+  border: 1px solid rgba(74,144,255,.15);
 }
 
 .node{
