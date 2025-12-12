@@ -427,8 +427,9 @@ body{
 .node.active{
   transform: translateY(-4px);
   border-color: var(--highlight-blue);
-  background: linear-gradient(135deg, rgba(74,144,255,.15), rgba(74,144,255,.08));
+  background: rgba(255,255,255,1);
   box-shadow: 0 6px 24px rgba(74,144,255,.28), 0 0 0 2px rgba(74,144,255,.12);
+  animation: pulse-glow 2s ease-in-out infinite, subtle-scale 2s ease-in-out infinite;
 }
 .node::after{
   content:"";
@@ -530,9 +531,10 @@ body{
 }
 .collectGroup .miniNode.active{
   border-color: var(--highlight-blue);
-  background: linear-gradient(135deg, rgba(74,144,255,.15), rgba(74,144,255,.08));
+  background: rgba(255,255,255,1);
   transform: translateY(-4px);
   box-shadow: 0 6px 20px rgba(74,144,255,.25), 0 0 0 2px rgba(74,144,255,.12);
+  animation: pulse-glow 2s ease-in-out infinite, subtle-scale 2s ease-in-out infinite;
 }
 .miniNode .row{
   display:flex;
@@ -594,8 +596,9 @@ body{
 .mergeNode.active{
   transform: translateY(-4px);
   border-color: var(--highlight-blue);
-  background: linear-gradient(135deg, rgba(74,144,255,.15), rgba(74,144,255,.08));
+  background: rgba(255,255,255,1);
   box-shadow: 0 6px 24px rgba(74,144,255,.28), 0 0 0 2px rgba(74,144,255,.12);
+  animation: pulse-glow 2s ease-in-out infinite, subtle-scale 2s ease-in-out infinite;
 }
 
 .overlaySvg{
@@ -756,7 +759,26 @@ body{
   .canvasInner{ min-width: 0; }
 }
 
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 6px 24px rgba(74,144,255,.28), 0 0 0 2px rgba(74,144,255,.12);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(74,144,255,.45), 0 0 0 3px rgba(74,144,255,.25);
+  }
+}
+
+@keyframes subtle-scale {
+  0%, 100% {
+    transform: translateY(-4px) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
 @media (prefers-reduced-motion: reduce){
   .node, .miniNode, .mergeNode, .btn{ transition:none !important; }
   .btn:hover{ transform:none; }
+  .node.active, .miniNode.active, .mergeNode.active{ animation:none !important; }
 }
